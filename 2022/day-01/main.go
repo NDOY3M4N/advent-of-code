@@ -30,7 +30,7 @@ func main() {
 
 	biggesCalorie := MaxSlice(sumsOfCalories)
 
-	fmt.Println("The highest calorie is", biggesCalorie)
+	fmt.Println("The Elf carrying the most Calories has a total of", biggesCalorie)
 }
 
 func MaxSlice(slice []uint) uint {
