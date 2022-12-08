@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	var path = "./input.txt"
+	var path = "./demo.txt"
 
 	content := ReadInput(path)
 
@@ -27,13 +27,15 @@ func main() {
 			continue
 		}
 	}
+  // Add the calories for the last elf in the list (the file)
+  sumsOfCalories = append(sumsOfCalories, elfTotalCalories)
 
-	biggesCalorie := MaxSlice(sumsOfCalories)
+	biggesCalorie := MostCalorie(sumsOfCalories)
 
 	fmt.Println("The Elf carrying the most Calories has a total of", biggesCalorie)
 }
 
-func MaxSlice(slice []uint) uint {
+func MostCalorie(slice []uint) uint {
 	var max, temp uint
 
 	for _, element := range slice {
