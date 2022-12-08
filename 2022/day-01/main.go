@@ -4,13 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
 func main() {
-	var path = "./demo.txt"
+	var path = "./input.txt"
 
-	content := ReadInput(path)
+	content := readInput(path)
 
 	var sumsOfCalories []uint
 	var elfTotalCalories uint
@@ -30,25 +31,27 @@ func main() {
   // Add the calories for the last elf in the list (the file)
   sumsOfCalories = append(sumsOfCalories, elfTotalCalories)
 
-	biggesCalorie := MostCalorie(sumsOfCalories)
+  // Part 1
+  // Sort the slice from max to min
+  sort.Slice(sumsOfCalories, func(i, j int) bool {
+    return sumsOfCalories[i] > sumsOfCalories[j]
+  })
 
-	fmt.Println("The Elf carrying the most Calories has a total of", biggesCalorie)
+  biggestCalorie := sumsOfCalories[0]
+	fmt.Println("The Elf carrying the most Calories has a total of", biggestCalorie)
+
+  // Part 2
+  topThrees := sumsOfCalories[:3]
+  var total uint
+
+  for _, element := range topThrees {
+    total += element
+  }
+
+  fmt.Println("The total of calories carried by the top 3 Elves is", total)
 }
 
-func MostCalorie(slice []uint) uint {
-	var max, temp uint
-
-	for _, element := range slice {
-		if element > temp {
-			temp = element
-			max = temp
-		}
-	}
-
-	return max
-}
-
-func ReadInput(path string) []string {
+func readInput(path string) []string {
 	// Open the file
 	file, err := os.OpenFile(path, os.O_RDONLY, 0644)
 	if err != nil {
