@@ -36,10 +36,11 @@ func main () {
     elf2Min, elf2Max := getSections(sectionElf2)
 
     // TODO: Pretty sure I can refactor this
-    cond1 := elf1Min >=elf2Min && elf1Max <= elf2Max
-    cond2 := elf2Min >=elf1Min && elf2Max <= elf1Max
+    // TODO: Yup, I'm pretty sure I can refactor this
+    condPart1 := elf1Min >=elf2Min && elf1Max <= elf2Max || elf2Min >=elf1Min && elf2Max <= elf1Max
+    condOverlap := elf1Max == elf2Min || elf2Min >= elf1Min && elf2Min <= elf1Max || elf1Min >= elf2Min && elf1Min <= elf2Max
 
-    if cond1 || cond2 {
+    if condPart1 || condOverlap {
       counter += 1
     }
   }
