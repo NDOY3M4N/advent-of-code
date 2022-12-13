@@ -28,27 +28,27 @@ func main() {
 			continue
 		}
 	}
-  // Add the calories for the last elf in the list (the file)
-  sumsOfCalories = append(sumsOfCalories, elfTotalCalories)
+	// Add the calories for the last elf in the list (the file)
+	sumsOfCalories = append(sumsOfCalories, elfTotalCalories)
 
-  // Part 1
-  // Sort the slice from max to min
-  sort.Slice(sumsOfCalories, func(i, j int) bool {
-    return sumsOfCalories[i] > sumsOfCalories[j]
-  })
+	// Part 1
+	// Sort the slice from max to min
+	sort.Slice(sumsOfCalories, func(i, j int) bool {
+		return sumsOfCalories[i] > sumsOfCalories[j]
+	})
 
-  biggestCalorie := sumsOfCalories[0]
+	biggestCalorie := sumsOfCalories[0]
 	fmt.Println("The Elf carrying the most Calories has a total of", biggestCalorie)
 
-  // Part 2
-  topThrees := sumsOfCalories[:3]
-  var total uint
+	// Part 2
+	topThrees := sumsOfCalories[:3]
+	var total uint
 
-  for _, element := range topThrees {
-    total += element
-  }
+	for _, element := range topThrees {
+		total += element
+	}
 
-  fmt.Println("The total of calories carried by the top 3 Elves is", total)
+	fmt.Println("The total of calories carried by the top 3 Elves is", total)
 }
 
 func readInput(path string) []string {
