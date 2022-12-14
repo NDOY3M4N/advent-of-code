@@ -35,18 +35,21 @@ func main() {
 
 	buffer := strings.TrimSpace(string(file))
 
+  // for Part 1
 	const MARKER_LENGTH int = 4
+  // for Part 2
+	const MARKER_LENGTH_2 int = 14
 
 	i := 0
 	set := newSet()
 
 	for {
-    length := i +MARKER_LENGTH
+    length := i +MARKER_LENGTH_2
 		for _, char := range buffer[i : length] {
 			set.Add(string(char))
 		}
 
-    if len(set.items) == MARKER_LENGTH {
+    if len(set.items) == MARKER_LENGTH_2 {
       fmt.Println("The number of character before the first start-of-packet marker is", length)
 			break
 		}
